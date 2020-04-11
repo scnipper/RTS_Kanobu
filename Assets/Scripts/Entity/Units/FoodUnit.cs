@@ -1,3 +1,5 @@
+using Util;
+
 namespace Entity
 {
 	public class FoodUnit : Unit
@@ -6,7 +8,7 @@ namespace Entity
 		{
 			if (unit is RusticUnit)
 			{
-				
+				FoodController.Get.Add(1);
 			}
 		}
 	}

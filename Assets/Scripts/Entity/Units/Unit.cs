@@ -11,6 +11,7 @@ namespace Entity
 		public bool isSelectable = true;
 		public int hp = 200;
 		public int attack = 20;
+		public int price = 20;
 		private Transform transformParent;
 		private Transform unitTr;
 
@@ -36,6 +37,11 @@ namespace Entity
 							Attack(tr.GetComponent<Unit>());
 						}
 					}
+				}
+
+				if (Field != null && Vector2.Distance(unitTr.position, Field.basePos.position) < 250)
+				{
+					Field.basePos.GetComponent<Base>().AddPower(0.1f);
 				}
 
 				yield return new WaitForSeconds(1);

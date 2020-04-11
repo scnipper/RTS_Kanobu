@@ -1,14 +1,22 @@
 using UnityEngine;
+using Util;
 
 namespace Entity
 {
 	public class Tower : MonoBehaviour
 	{
 		public Vector2 startPos;
-		public Unit unit;
 		public bool isTop;
 		private Vector2[] posForSpawn = new Vector2[3];
 		public Transform unitsPlace;
+
+		public RusticUnit rusticUnit;
+		
+		
+		public enum TypeUnits
+		{
+			Rustic,Knight,WizFire,WizEarth,WizWater
+		}
 
 		private void Start()
 		{
@@ -26,22 +34,37 @@ namespace Entity
 			}
 		}
 
-		public void SpawnUnit()
+		public void SpawnUnit(TypeUnits typeUnits)
 		{
-			var newUnit = Instantiate(unit,unitsPlace);
+			Unit unit = null;
 
-			for (int i = 0; i < 20; i++)
+			switch (typeUnits)
 			{
-				var pos = posForSpawn[Random.Range(0,3)];
-				var hexagonByPos = Field.GetHexagonByPos((int) pos.x, (int) pos.y);
-				if(hexagonByPos.IsUnitAdd) continue;
-				
-				hexagonByPos.IsUnitAdd = true;
-				newUnit.transform.position = hexagonByPos.transform.position;
-				newUnit.Field = Field;
-				newUnit.CurHexagon = hexagonByPos;
-				break;
+				case TypeUnits.Rustic:
+					unit = rusticUnit;
+					break;
 			}
+
+			if (FoodController.Get.Food >= unit.price)
+			{
+				FoodController.Get.Decrement(unit.price);
+				var newUnit = Instantiate(unit,unitsPlace);
+
+				for (int i = 0; i < 20; i++)
+				{
+					var pos = posForSpawn[Random.Range(0,3)];
+					var hexagonByPos = Field.GetHexagonByPos((int) pos.x, (int) pos.y);
+					if(hexagonByPos.IsUnitAdd) continue;
+				
+					hexagonByPos.IsUnitAdd = true;
+					newUnit.transform.position = hexagonByPos.transform.position;
+					newUnit.Field = Field;
+					newUnit.CurHexagon = hexagonByPos;
+					break;
+				}
+			}
+			
+			
 			
 		}
 

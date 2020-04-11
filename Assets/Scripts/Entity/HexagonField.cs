@@ -7,6 +7,7 @@ namespace Entity
 		public Hexagon hexagon;
 		public Tower tower1;
 		public Tower tower2;
+		public Transform basePos;
 		private Vector2 hexagonSize;
 		private Tower playTower;
 		private Unit selectedUnit;
@@ -45,7 +46,7 @@ namespace Entity
 
 		public void SpawnRustic()
 		{
-			playTower.SpawnUnit();
+			playTower.SpawnUnit(Tower.TypeUnits.Rustic);
 		}
 		private void GenerateHexagons()
 		{

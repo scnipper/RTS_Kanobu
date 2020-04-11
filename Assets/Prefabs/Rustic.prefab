@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3321093262817936778}
   - component: {fileID: 3321093262817936779}
-  - component: {fileID: 6329459006328214249}
   - component: {fileID: 8871597046761936830}
+  - component: {fileID: 1935771792485497117}
   m_Layer: 0
-  m_Name: unit
+  m_Name: Rustic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 05fc1c5fed6fa4b04a4abdd2276801a5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.31181023, g: 0.8584906, b: 0.63598615, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -82,21 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6329459006328214249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3321093262817936776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebe672d6f5c943e19e403819c440905e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingParam:
-    speedMove: 500
-    minDistance: 20
 --- !u!61 &8871597046761936830
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +108,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 300, y: 300}
   m_EdgeRadius: 0
+--- !u!114 &1935771792485497117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321093262817936776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00aa19ef3dfb4e63875471e09106dda5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingParam:
+    speedMove: 500
+    minDistance: 20
+  isSelectable: 1
+  hp: 200
+  attack: 20
