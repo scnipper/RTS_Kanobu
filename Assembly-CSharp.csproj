@@ -58,6 +58,9 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Entity\Hexagon.cs" />
      <Compile Include="Assets\Scripts\Entity\HexagonField.cs" />
+     <Compile Include="Assets\Scripts\Entity\Settings.cs" />
+     <Compile Include="Assets\Scripts\Entity\Tower.cs" />
+     <Compile Include="Assets\Scripts\Entity\Unit.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/scnipper/Documents/unity/RTS_game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
