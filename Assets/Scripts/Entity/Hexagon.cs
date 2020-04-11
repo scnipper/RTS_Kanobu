@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Entity
@@ -15,5 +16,10 @@ namespace Entity
 		public SpriteRenderer SpriteRenderer => spr == null ? GetComponent<SpriteRenderer>() : spr;
 
 		public Vector2 Size => SpriteRenderer.size * transform.localScale * 100;
+
+		private void OnMouseDown()
+		{
+			//SpriteRenderer.color = Color.red;
+		}
 	}
 }
