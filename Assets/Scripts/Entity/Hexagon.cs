@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Entity
@@ -7,19 +6,39 @@ namespace Entity
 	{
 
 		private SpriteRenderer spr;
+		private bool isMoving;
+		private Color saveColor;
+
 		private void Start()
 		{
-			
+			saveColor = SpriteRenderer.color;
 		}
 
+		public void Deselect()
+		{
+			SpriteRenderer.color = saveColor;
+		}
+
+		private void OnMouseDown()
+		{
+			if (Field.SelectedUnit != null && !isMoving)
+			{
+				isMoving = true;
+				SpriteRenderer.color = Color.red;
+				Field.SelectedUnit.Target = transform;
+			}
+		}
 
 		public SpriteRenderer SpriteRenderer => spr == null ? GetComponent<SpriteRenderer>() : spr;
 
 		public Vector2 Size => SpriteRenderer.size * transform.localScale * 100;
+		public bool IsUnitAdd { get; set; }
+		public HexagonField Field { get; set; }
 
-		private void OnMouseDown()
+		public bool IsMoving
 		{
-			//SpriteRenderer.color = Color.red;
+			get => isMoving;
+			set => isMoving = value;
 		}
 	}
 }

@@ -31,8 +31,19 @@ namespace Entity
 		{
 			var newUnit = Instantiate(unit,unitsPlace);
 
-			var pos = posForSpawn[Random.Range(0,3)];
-			newUnit.transform.position = Field.GetHexagonByPos((int) pos.x, (int) pos.y).transform.position;
+			for (int i = 0; i < 20; i++)
+			{
+				var pos = posForSpawn[Random.Range(0,3)];
+				var hexagonByPos = Field.GetHexagonByPos((int) pos.x, (int) pos.y);
+				if(hexagonByPos.IsUnitAdd) continue;
+				
+				hexagonByPos.IsUnitAdd = true;
+				newUnit.transform.position = hexagonByPos.transform.position;
+				newUnit.Field = Field;
+				newUnit.CurHexagon = hexagonByPos;
+				break;
+			}
+			
 		}
 
 		public bool IsPlayer { get; set; }

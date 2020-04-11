@@ -9,6 +9,7 @@ namespace Entity
 		public Tower tower2;
 		private Vector2 hexagonSize;
 		private Tower playTower;
+		private Unit selectedUnit;
 
 		private void Start()
 		{
@@ -55,6 +56,7 @@ namespace Entity
 					var newHexagon = Instantiate(hexagon,transform);
 					newHexagon.name = $"HEX_{j}_{i}";
 					newHexagon.transform.position = GetPosHexagon(j,i);
+					newHexagon.Field = this;
 				}
 			}
 		}
@@ -64,6 +66,12 @@ namespace Entity
 			float offset = y % 2 == 0 ? hexagonSize.x / 2 : 0;
 
 			return new Vector2(offset + (x * hexagonSize.x), y * hexagonSize.y / 1.5f);
+		}
+
+		public Unit SelectedUnit
+		{
+			get => selectedUnit;
+			set => selectedUnit = value;
 		}
 	}
 }
