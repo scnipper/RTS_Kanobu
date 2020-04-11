@@ -17,12 +17,12 @@ namespace Entity
 
 			tower1.Field = this;
 			tower2.Field = this;
-			if (Settings.isFirstPlayer)
+			if (Settings.playerNum == 0)
 			{
 				tower2.IsPlayer = true;
 				playTower = tower2;
 			}
-			else
+			else if (Settings.playerNum == 1)
 			{
 				tower1.IsPlayer = true;
 				playTower = tower1;

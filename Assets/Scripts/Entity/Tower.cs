@@ -8,11 +8,10 @@ namespace Entity
 		public Unit unit;
 		public bool isTop;
 		private Vector2[] posForSpawn = new Vector2[3];
-		private Transform unitsPlace;
+		public Transform unitsPlace;
 
 		private void Start()
 		{
-			unitsPlace = transform.parent.Find("Units");
 			if (isTop)
 			{
 				posForSpawn[0] = new Vector2(startPos.x-1,startPos.y);
