@@ -7,11 +7,12 @@ namespace Util
 	{
 		private static FoodController instance;
 
-		private int food = 100;
+		private int food;
 		private Text foodText;
 
 		private void Awake()
 		{
+			food = (int) P.Get.config.StartFood;
 			instance = this;
 			foodText = GetComponent<Text>();
 		}

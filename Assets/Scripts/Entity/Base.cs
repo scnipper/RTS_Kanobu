@@ -1,4 +1,5 @@
 using UnityEngine;
+using Util;
 
 namespace Entity
 {
@@ -6,18 +7,20 @@ namespace Entity
 	{
 		public SpriteRenderer fillImg;
 
+		private int attackTower;
 		private float power = 0;
 		private static readonly int Fill = Shader.PropertyToID("_Fill");
 
 
 		private void Start()
 		{
+			attackTower = (int) P.Get.config.Fontan.AttackTower;
 			UpdatePowerFill();
 		}
 
-		public void AddPower(float delta)
+		public void AddPower()
 		{
-			power += delta;
+			power += 1.0f/P.Get.config.Fontan.TimeCapture;
 
 			if (power > 1)
 			{

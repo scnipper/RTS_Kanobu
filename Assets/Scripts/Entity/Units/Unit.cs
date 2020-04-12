@@ -1,6 +1,7 @@
 using System.Collections;
 using Entity.Fight;
 using UnityEngine;
+using Util;
 
 namespace Entity
 {
@@ -12,19 +13,36 @@ namespace Entity
 		public int hp = 200;
 		public int attack = 20;
 		public int price = 20;
+		public int configId;
 		private Transform transformParent;
 		private Transform unitTr;
+		private float speedAttack;
 
 		protected override void Start()
 		{
 			spriteRenderer = GetComponent<SpriteRenderer>();
 			unitTr = transform;
 			transformParent = unitTr.parent;
-			StartCoroutine(AtttackCycle());
+			StartCoroutine(AttackCycle());
+			SetFromConfig();
 			base.Start();
 		}
 
-		private IEnumerator AtttackCycle()
+		private void SetFromConfig()
+		{
+			foreach (var configUnit in P.Get.config.Units)
+			{
+				if (configUnit.Id == configId)
+				{
+					hp = (int) configUnit.Hp;
+					attack = (int) configUnit.Attack;
+					price = (int) configUnit.Price;
+					speedAttack = (float) configUnit.SpeedAttack;
+				}
+			}
+		}
+
+		private IEnumerator AttackCycle()
 		{
 			while (true)
 			{
@@ -41,10 +59,10 @@ namespace Entity
 
 				if (Field != null && Vector2.Distance(unitTr.position, Field.basePos.position) < 250)
 				{
-					Field.basePos.GetComponent<Base>().AddPower(0.1f);
+					Field.basePos.GetComponent<Base>().AddPower();
 				}
 
-				yield return new WaitForSeconds(1);
+				yield return new WaitForSeconds(speedAttack);
 			}
 		}
 

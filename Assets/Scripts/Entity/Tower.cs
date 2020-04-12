@@ -11,8 +11,9 @@ namespace Entity
 		public Transform unitsPlace;
 
 		public RusticUnit rusticUnit;
-		
-		
+		private int hp;
+		private int maxHp;
+
 		public enum TypeUnits
 		{
 			Rustic,Knight,WizFire,WizEarth,WizWater
@@ -20,6 +21,8 @@ namespace Entity
 
 		private void Start()
 		{
+			hp = (int) P.Get.config.Tower.Hp;
+			maxHp = hp;
 			if (isTop)
 			{
 				posForSpawn[0] = new Vector2(startPos.x-1,startPos.y);

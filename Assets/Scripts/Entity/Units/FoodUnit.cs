@@ -8,7 +8,7 @@ namespace Entity
 		{
 			if (unit is RusticUnit)
 			{
-				FoodController.Get.Add(1);
+				FoodController.Get.Add((int) P.Get.config.CraftFood);
 			}
 		}
 	}

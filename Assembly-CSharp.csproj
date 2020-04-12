@@ -56,7 +56,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Data\Config.cs" />
      <Compile Include="Assets\Scripts\Entity\Base.cs" />
+     <Compile Include="Assets\Scripts\Entity\GameScene.cs" />
      <Compile Include="Assets\Scripts\Entity\Hexagon.cs" />
      <Compile Include="Assets\Scripts\Entity\HexagonField.cs" />
      <Compile Include="Assets\Scripts\Entity\MoveToTarget.cs" />
@@ -70,9 +72,11 @@
      <Compile Include="Assets\Scripts\Entity\Units\WizFireUnit.cs" />
      <Compile Include="Assets\Scripts\Entity\Units\WizWaterUnit.cs" />
      <Compile Include="Assets\Scripts\Util\FoodController.cs" />
+     <Compile Include="Assets\Scripts\Util\P.cs" />
      <Compile Include="Assets\Scripts\Util\Vector2Extension.cs" />
      <None Include="Assets\Materials\Shaders\FillExceptAlpha.shader" />
      <None Include="Assets\Materials\Shaders\FillAmountShader.shader" />
+     <None Include="Assets\JsonDotNet\link.xml" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/scnipper/Documents/unity/RTS_game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -276,6 +280,9 @@
  </Reference>
  <Reference Include="UnityEngine.XRModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.2.17f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>/Users/scnipper/Documents/unity/RTS_game/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2019.2.17f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
