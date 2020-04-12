@@ -1,3 +1,4 @@
+using System.Net.Sockets;
 using QuickType;
 
 namespace Util
@@ -7,6 +8,7 @@ namespace Util
 		private static P instance;
 
 		public Config config;
+		public Socket client;
 
 		public static P Get => instance ?? (instance = new P());
 	}

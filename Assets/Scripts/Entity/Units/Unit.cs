@@ -16,7 +16,7 @@ namespace Entity
 		public int configId;
 		private Transform transformParent;
 		private Transform unitTr;
-		private float speedAttack;
+		private float speedAttack = 1;
 
 		protected override void Start()
 		{

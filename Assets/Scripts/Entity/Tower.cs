@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Util;
+using Util.Net;
 
 namespace Entity
 {
@@ -20,6 +22,13 @@ namespace Entity
 		
 		private int hp;
 		private int maxHp;
+		private int posToSpawn;
+
+		private bool isSending = true;
+		
+		byte[] buffer = new byte[256];
+		private int sending;
+
 
 		public enum TypeUnits
 		{
@@ -62,7 +71,7 @@ namespace Entity
 			Field.priceWizWater.text = wizWaterUnit.Price+"";
 		}
 
-		public void SpawnUnit(TypeUnits typeUnits)
+		public void SpawnUnit(TypeUnits typeUnits,bool withoutFood = false)
 		{
 			Unit unit = null;
 
@@ -85,25 +94,69 @@ namespace Entity
 					break;
 			}
 
-			if (FoodController.Get.Food >= unit.price)
+			if (FoodController.Get.Food >= unit.price || withoutFood)
 			{
-				FoodController.Get.Decrement(unit.price);
+				
 				var newUnit = Instantiate(unit,unitsPlace);
 
-				for (int i = 0; i < 20; i++)
-				{
-					var pos = posForSpawn[Random.Range(0,3)];
-					var hexagonByPos = Field.GetHexagonByPos((int) pos.x, (int) pos.y);
-					if(hexagonByPos.IsUnitAdd) continue;
 				
+				var pos = posForSpawn[posToSpawn];
+				var hexagonByPos = Field.GetHexagonByPos((int) pos.x, (int) pos.y);
+				posToSpawn++;
+				if (posToSpawn >= posForSpawn.Length)
+				{
+					posToSpawn = 0;
+				}
+				if (!hexagonByPos.IsUnitAdd)
+				{
+					if(!withoutFood)
+						FoodController.Get.Decrement(unit.price);
 					hexagonByPos.IsUnitAdd = true;
 					newUnit.transform.position = hexagonByPos.transform.position;
 					newUnit.Field = Field;
 					newUnit.CurHexagon = hexagonByPos;
-					break;
+
+					if (isSending && IsPlayer)
+					{
+						isSending = false;
+						buffer[0] = Commands.SpawnUnit;
+						buffer[1] = (byte) typeUnits;
+						SendSpawn();
+
+					}
+
 				}
+				else
+				{
+					Destroy(newUnit.gameObject);
+				}
+			
+				
+				
 			}
 			
+			
+			
+		}
+
+		private void SendSpawn()
+		{
+			P.Get.client.BeginSend(buffer, sending, 256 - sending, 0, SendOk, P.Get.client);
+		}
+
+		private void SendOk(IAsyncResult ar)
+		{
+			sending += P.Get.client.EndSend(ar);
+			if (sending >= 256)
+			{
+				sending = 0;
+				isSending = true;
+				print("sending spawn");
+			}
+			else
+			{
+				SendSpawn();
+			}
 			
 			
 		}

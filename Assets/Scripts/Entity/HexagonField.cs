@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Util;
+using Util.Net;
 
 namespace Entity
 {
@@ -26,17 +27,23 @@ namespace Entity
 
 			tower1.Field = this;
 			tower2.Field = this;
+			Tower spawnTower = null;
 			if (Settings.playerNum == 0)
 			{
 				tower2.IsPlayer = true;
 				playTower = tower2;
+				spawnTower = tower1;
 			}
 			else if (Settings.playerNum == 1)
 			{
 				tower1.IsPlayer = true;
 				playTower = tower1;
-
+				spawnTower = tower2;
 			}
+
+			var netListen = new GameObject("NET_LISTEN");
+
+			netListen.AddComponent<MainNetListener>().SpawnTower = spawnTower;
 			GenerateHexagons();
 		}
 
