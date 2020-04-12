@@ -28,7 +28,7 @@ namespace Entity
 			base.Start();
 		}
 
-		private void SetFromConfig()
+		public void SetFromConfig()
 		{
 			foreach (var configUnit in P.Get.config.Units)
 			{
@@ -95,19 +95,13 @@ namespace Entity
 				
 		}
 
-		private void Deselect()
-		{
-			spriteRenderer.color = Color.white;
-		}
+		
 		private void OnMouseDown()
 		{
 			if (isSelectable)
 			{
-				if (Field.SelectedUnit != null)
-				{
-					Field.SelectedUnit.Deselect();
-				}
-				spriteRenderer.color = Color.blue;
+				
+				//spriteRenderer.color = Color.blue;
 				Field.SelectedUnit = this;
 			}
 			
@@ -116,5 +110,7 @@ namespace Entity
 		public HexagonField Field { get; set; }
 		public Hexagon CurHexagon { get; set; }
 		public Transform Target { get; set; }
+
+		public int Price => price;
 	}
 }

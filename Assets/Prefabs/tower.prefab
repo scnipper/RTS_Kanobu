@@ -100,6 +100,14 @@ MonoBehaviour:
   unitsPlace: {fileID: 0}
   rusticUnit: {fileID: 1935771792485497117, guid: 147bb93d4a15246b584de0f8cc9418a9,
     type: 3}
+  knightUnit: {fileID: 3489879404883791437, guid: e6c376b60c70349e588f6a5dfc6d22bd,
+    type: 3}
+  wizFireUnit: {fileID: 6689621373796366047, guid: a4e8190fae86b42d29d8ee1709b861ba,
+    type: 3}
+  wizEarthUnit: {fileID: 5442938663018365825, guid: e3605563ca30048f28071b20886dba34,
+    type: 3}
+  wizWaterUnit: {fileID: 3746218188557054990, guid: 81bdfb05d739046debc476b824d59efe,
+    type: 3}
 --- !u!1001 &2370543228189268047
 PrefabInstance:
   m_ObjectHideFlags: 0

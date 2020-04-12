@@ -8,6 +8,6 @@ namespace Util
 
 		public Config config;
 
-		public static P Get => instance;
+		public static P Get => instance ?? (instance = new P());
 	}
 }

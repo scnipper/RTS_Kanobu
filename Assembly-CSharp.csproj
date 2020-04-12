@@ -62,7 +62,6 @@
      <Compile Include="Assets\Scripts\Entity\Hexagon.cs" />
      <Compile Include="Assets\Scripts\Entity\HexagonField.cs" />
      <Compile Include="Assets\Scripts\Entity\MoveToTarget.cs" />
-     <Compile Include="Assets\Scripts\Entity\Settings.cs" />
      <Compile Include="Assets\Scripts\Entity\Tower.cs" />
      <Compile Include="Assets\Scripts\Entity\Units\FoodUnit.cs" />
      <Compile Include="Assets\Scripts\Entity\Units\KnightUnit.cs" />
@@ -73,6 +72,7 @@
      <Compile Include="Assets\Scripts\Entity\Units\WizWaterUnit.cs" />
      <Compile Include="Assets\Scripts\Util\FoodController.cs" />
      <Compile Include="Assets\Scripts\Util\P.cs" />
+     <Compile Include="Assets\Scripts\Util\Settings.cs" />
      <Compile Include="Assets\Scripts\Util\Vector2Extension.cs" />
      <None Include="Assets\Materials\Shaders\FillExceptAlpha.shader" />
      <None Include="Assets\Materials\Shaders\FillAmountShader.shader" />

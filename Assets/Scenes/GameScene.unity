@@ -216,6 +216,11 @@ MonoBehaviour:
   tower1: {fileID: 2037791758}
   tower2: {fileID: 448739328}
   basePos: {fileID: 1824974174}
+  priceRustic: {fileID: 944649170}
+  priceKnight: {fileID: 1210743346}
+  priceWizFire: {fileID: 1604732594}
+  priceWizEarth: {fileID: 1030732009}
+  priceWizWater: {fileID: 1945663202}
 --- !u!4 &104886028
 Transform:
   m_ObjectHideFlags: 0
@@ -391,7 +396,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 104886027}
-        m_MethodName: SpawnRustic
+        m_MethodName: SpawnWizFire
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1571,7 +1576,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 104886027}
-        m_MethodName: SpawnRustic
+        m_MethodName: SpawnWizWater
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1707,7 +1712,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 104886027}
-        m_MethodName: SpawnRustic
+        m_MethodName: SpawnKnight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2104,7 +2109,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 104886027}
-        m_MethodName: SpawnRustic
+        m_MethodName: SpawnWizEarth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

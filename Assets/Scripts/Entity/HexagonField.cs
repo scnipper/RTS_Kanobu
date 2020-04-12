@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using Util;
 
 namespace Entity
 {
@@ -11,6 +13,12 @@ namespace Entity
 		private Vector2 hexagonSize;
 		private Tower playTower;
 		private Unit selectedUnit;
+		
+		public Text priceRustic; 
+		public Text priceKnight; 
+		public Text priceWizFire; 
+		public Text priceWizEarth; 
+		public Text priceWizWater; 
 
 		private void Start()
 		{
@@ -47,6 +55,22 @@ namespace Entity
 		public void SpawnRustic()
 		{
 			playTower.SpawnUnit(Tower.TypeUnits.Rustic);
+		}
+		public void SpawnKnight()
+		{
+			playTower.SpawnUnit(Tower.TypeUnits.Knight);
+		}
+		public void SpawnWizWater()
+		{
+			playTower.SpawnUnit(Tower.TypeUnits.WizWater);
+		}
+		public void SpawnWizFire()
+		{
+			playTower.SpawnUnit(Tower.TypeUnits.WizFire);
+		}
+		public void SpawnWizEarth()
+		{
+			playTower.SpawnUnit(Tower.TypeUnits.WizEarth);
 		}
 		private void GenerateHexagons()
 		{

@@ -10,7 +10,7 @@ namespace Util
 		private int food;
 		private Text foodText;
 
-		private void Awake()
+		private void Start()
 		{
 			food = (int) P.Get.config.StartFood;
 			instance = this;

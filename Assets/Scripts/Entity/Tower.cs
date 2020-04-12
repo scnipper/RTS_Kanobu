@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Util;
 
@@ -11,6 +12,12 @@ namespace Entity
 		public Transform unitsPlace;
 
 		public RusticUnit rusticUnit;
+		public KnightUnit knightUnit;
+		public WizFireUnit wizFireUnit;
+		public WizEarthUnit wizEarthUnit;
+		public WizWaterUnit wizWaterUnit;
+
+		
 		private int hp;
 		private int maxHp;
 
@@ -21,6 +28,9 @@ namespace Entity
 
 		private void Start()
 		{
+
+			StartCoroutine(SetPrice());
+			
 			hp = (int) P.Get.config.Tower.Hp;
 			maxHp = hp;
 			if (isTop)
@@ -37,6 +47,21 @@ namespace Entity
 			}
 		}
 
+		private IEnumerator SetPrice()
+		{
+			yield return new WaitForSeconds(1);
+			knightUnit.SetFromConfig();
+			rusticUnit.SetFromConfig();
+			wizEarthUnit.SetFromConfig();
+			wizFireUnit.SetFromConfig();
+			wizWaterUnit.SetFromConfig();
+			Field.priceKnight.text = knightUnit.Price+"";
+			Field.priceRustic.text = rusticUnit.Price+"";
+			Field.priceWizEarth.text = wizEarthUnit.Price+"";
+			Field.priceWizFire.text = wizFireUnit.Price+"";
+			Field.priceWizWater.text = wizWaterUnit.Price+"";
+		}
+
 		public void SpawnUnit(TypeUnits typeUnits)
 		{
 			Unit unit = null;
@@ -45,6 +70,18 @@ namespace Entity
 			{
 				case TypeUnits.Rustic:
 					unit = rusticUnit;
+					break;
+				case TypeUnits.Knight:
+					unit = knightUnit;
+					break;
+				case TypeUnits.WizEarth:
+					unit = wizEarthUnit;
+					break;
+				case TypeUnits.WizFire:
+					unit = wizFireUnit;
+					break;
+				case TypeUnits.WizWater:
+					unit = wizWaterUnit;
 					break;
 			}
 
