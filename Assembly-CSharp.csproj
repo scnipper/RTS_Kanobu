@@ -58,6 +58,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Data\Config.cs" />
      <Compile Include="Assets\Scripts\Entity\Base.cs" />
+     <Compile Include="Assets\Scripts\Entity\FireBall.cs" />
      <Compile Include="Assets\Scripts\Entity\Hexagon.cs" />
      <Compile Include="Assets\Scripts\Entity\HexagonField.cs" />
      <Compile Include="Assets\Scripts\Entity\MoveToTarget.cs" />

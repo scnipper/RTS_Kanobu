@@ -129,7 +129,11 @@ namespace Util.Net
 
 		private void StartReceive()
 		{
-			P.Get.client.BeginReceive(buffer, received, size - received, 0, ReciveComplete, P.Get.client);
+			if (P.Get.client != null)
+			{
+				P.Get.client.BeginReceive(buffer, received, size - received, 0, ReciveComplete, P.Get.client);
+			}
+
 		}
 
 		private void ReciveComplete(IAsyncResult ar)

@@ -32,12 +32,15 @@ namespace Entity
 					buffer[0] = Commands.SetPos;
 					AppendToBuffer(1,BitConverter.GetBytes(transform.GetSiblingIndex()));
 					AppendToBuffer(5,BitConverter.GetBytes(Field.SelectedUnit.IdUnit));
-					
-					int sending = 0;
-					while (sending < 32)
+					if (P.Get.client != null)
 					{
-						sending += P.Get.client.Send(buffer,sending,32 -sending,0);
+						int sending = 0;
+						while (sending < 32)
+						{
+							sending += P.Get.client.Send(buffer,sending,32 -sending,0);
+						}
 					}
+					
 				}
 				MoveHere(Field.SelectedUnit);
 				

@@ -19,6 +19,7 @@ namespace Entity
 		public WizEarthUnit wizEarthUnit;
 		public WizWaterUnit wizWaterUnit;
 		public int idUnit = 1000;
+		public SpriteRenderer fill;
 
 		
 		private int hp;
@@ -29,6 +30,7 @@ namespace Entity
 		
 		byte[] buffer = new byte[32];
 		private int sending;
+		private static readonly int Fill = Shader.PropertyToID("_Fill");
 
 
 		public enum TypeUnits
@@ -142,9 +144,20 @@ namespace Entity
 			
 		}
 
+
+		public void DecrementHp(int dec)
+		{
+			hp -= dec;
+			fill.material.SetFloat(Fill,hp/(float)maxHp);
+			
+		}
 		private void SendSpawn()
 		{
-			P.Get.client.BeginSend(buffer, sending, 32 - sending, 0, SendOk, P.Get.client);
+			if (P.Get.client != null)
+			{
+				P.Get.client.BeginSend(buffer, sending, 32 - sending, 0, SendOk, P.Get.client);
+			}
+
 		}
 
 		private void SendOk(IAsyncResult ar)

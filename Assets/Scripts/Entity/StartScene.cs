@@ -42,6 +42,11 @@ namespace Entity
 			}
 			
 			yield return new WaitForEndOfFrame();
+			StartGame();
+		}
+
+		public void StartGame()
+		{
 			SceneManager.LoadScene("GameScene");
 
 		}

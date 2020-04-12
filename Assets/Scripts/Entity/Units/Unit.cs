@@ -56,11 +56,7 @@ namespace Entity
 						}
 					}
 				}
-
-				if (Field != null && Vector2.Distance(unitTr.position, Field.basePos.position) < 250)
-				{
-					Field.basePos.GetComponent<Base>().AddPower();
-				}
+				
 
 				yield return new WaitForSeconds(speedAttack);
 			}

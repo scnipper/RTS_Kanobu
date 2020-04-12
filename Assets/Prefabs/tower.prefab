@@ -108,6 +108,8 @@ MonoBehaviour:
     type: 3}
   wizWaterUnit: {fileID: 3746218188557054990, guid: 81bdfb05d739046debc476b824d59efe,
     type: 3}
+  idUnit: 1000
+  fill: {fileID: 702791842939064861}
 --- !u!1001 &2370543228189268047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -190,6 +192,12 @@ PrefabInstance:
 --- !u!4 &630435522713157321 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2907668692315088518, guid: ec38424e4a7b241098da125eaa5bcb24,
+    type: 3}
+  m_PrefabInstance: {fileID: 2370543228189268047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &702791842939064861 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2964791273556347474, guid: ec38424e4a7b241098da125eaa5bcb24,
     type: 3}
   m_PrefabInstance: {fileID: 2370543228189268047}
   m_PrefabAsset: {fileID: 0}
