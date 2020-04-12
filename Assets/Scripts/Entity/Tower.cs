@@ -18,6 +18,7 @@ namespace Entity
 		public WizFireUnit wizFireUnit;
 		public WizEarthUnit wizEarthUnit;
 		public WizWaterUnit wizWaterUnit;
+		public int idUnit = 1000;
 
 		
 		private int hp;
@@ -26,7 +27,7 @@ namespace Entity
 
 		private bool isSending = true;
 		
-		byte[] buffer = new byte[256];
+		byte[] buffer = new byte[32];
 		private int sending;
 
 
@@ -115,6 +116,8 @@ namespace Entity
 					newUnit.transform.position = hexagonByPos.transform.position;
 					newUnit.Field = Field;
 					newUnit.CurHexagon = hexagonByPos;
+					newUnit.IdUnit = idUnit++;
+					newUnit.IdPlayer = IdPlayer;
 
 					if (isSending && IsPlayer)
 					{
@@ -141,13 +144,13 @@ namespace Entity
 
 		private void SendSpawn()
 		{
-			P.Get.client.BeginSend(buffer, sending, 256 - sending, 0, SendOk, P.Get.client);
+			P.Get.client.BeginSend(buffer, sending, 32 - sending, 0, SendOk, P.Get.client);
 		}
 
 		private void SendOk(IAsyncResult ar)
 		{
 			sending += P.Get.client.EndSend(ar);
-			if (sending >= 256)
+			if (sending >= 32)
 			{
 				sending = 0;
 				isSending = true;
@@ -162,6 +165,8 @@ namespace Entity
 		}
 
 		public bool IsPlayer { get; set; }
+		
+		public int IdPlayer { get; set; }
 
 		public HexagonField Field { get; set; }
 	}

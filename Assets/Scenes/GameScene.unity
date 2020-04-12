@@ -2623,6 +2623,11 @@ PrefabInstance:
       propertyPath: unitsPlace
       value: 
       objectReference: {fileID: 1548822972}
+    - target: {fileID: 3265216480543368865, guid: 8e1de4abd8ac04b31b2b3b667394f766,
+        type: 3}
+      propertyPath: idUnit
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 7449374411521244309, guid: 8e1de4abd8ac04b31b2b3b667394f766,
         type: 3}
       propertyPath: m_Sprite

@@ -33,17 +33,25 @@ namespace Entity
 				tower2.IsPlayer = true;
 				playTower = tower2;
 				spawnTower = tower1;
+				playTower.IdPlayer = 0;
+				spawnTower.IdPlayer = 1;
 			}
 			else if (Settings.playerNum == 1)
 			{
 				tower1.IsPlayer = true;
 				playTower = tower1;
 				spawnTower = tower2;
+				
+				playTower.IdPlayer = 1;
+				spawnTower.IdPlayer = 0;
 			}
 
 			var netListen = new GameObject("NET_LISTEN");
 
-			netListen.AddComponent<MainNetListener>().SpawnTower = spawnTower;
+			var mainNetListener = netListen.AddComponent<MainNetListener>();
+			mainNetListener.SpawnTower = spawnTower;
+			mainNetListener.UnitsPlace = tower1.unitsPlace;
+			mainNetListener.HexagonField = transform;
 			GenerateHexagons();
 		}
 

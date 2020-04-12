@@ -98,7 +98,7 @@ namespace Entity
 		
 		private void OnMouseDown()
 		{
-			if (isSelectable)
+			if (isSelectable && IdPlayer == Settings.playerNum)
 			{
 				
 				//spriteRenderer.color = Color.blue;
@@ -110,7 +110,9 @@ namespace Entity
 		public HexagonField Field { get; set; }
 		public Hexagon CurHexagon { get; set; }
 		public Transform Target { get; set; }
+		public int IdUnit { get; set; }
 
 		public int Price => price;
+		public int IdPlayer { get; set; }
 	}
 }
