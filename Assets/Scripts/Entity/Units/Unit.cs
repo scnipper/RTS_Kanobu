@@ -1,5 +1,6 @@
 using System.Collections;
 using Entity.Fight;
+using TMPro;
 using UnityEngine;
 using Util;
 
@@ -13,6 +14,7 @@ namespace Entity
 		public int attack = 20;
 		public int price = 20;
 		public int configId;
+		public TextMeshPro hpText;
 		private Transform transformParent;
 		private Transform unitTr;
 		private float speedAttack = 1;
@@ -21,8 +23,8 @@ namespace Entity
 		{
 			unitTr = transform;
 			transformParent = unitTr.parent;
-			StartCoroutine(AttackCycle());
 			SetFromConfig();
+			StartCoroutine(AttackCycle());
 			base.Start();
 		}
 
@@ -36,12 +38,18 @@ namespace Entity
 					attack = (int) configUnit.Attack;
 					price = (int) configUnit.Price;
 					speedAttack = (float) configUnit.SpeedAttack;
+					UpdateHpText();
 				}
 			}
 		}
 
+		private void UpdateHpText()
+		{
+			hpText.text = hp+"";
+		}
 		private IEnumerator AttackCycle()
 		{
+			yield return new WaitForSeconds(1);
 			while (true)
 			{
 				foreach (Transform tr in transformParent)
@@ -63,6 +71,7 @@ namespace Entity
 		protected virtual void Attack(Unit unit)
 		{
 			unit.hp -= attack * (IsAttackX2(unit) ? 2:1) ;
+			unit.UpdateHpText();
 			if (unit.hp <= 0)
 			{
 				Destroy(unit.gameObject);
