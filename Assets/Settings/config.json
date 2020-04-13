@@ -1,6 +1,6 @@
 {
   "start_food": 100,
-  "craft_food": 1,
+  "craft_food": 2,
   "tower": {
     "hp": 1000,
     "attack": 20,
@@ -8,7 +8,7 @@
   },
   "fontan": {
     "attack_tower": 250,
-    "time_capture": 40
+    "time_capture": 15
   },
   "units": [
     {"id": 1,"hp": 200,"attack": 0,"speed_attack": 1.1,"price": 60},

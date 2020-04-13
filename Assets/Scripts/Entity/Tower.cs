@@ -21,6 +21,9 @@ namespace Entity
 		public int idUnit = 1000;
 		public SpriteRenderer fill;
 
+		public GameObject earthSchool;
+		public GameObject waterSchool;
+		public GameObject fireSchool;
 		
 		private int hp;
 		private int maxHp;
@@ -99,6 +102,24 @@ namespace Entity
 
 			if (FoodController.Get.Food >= unit.price || withoutFood)
 			{
+				/*if (unit is WizWaterUnit && !wizWaterUnit.gameObject.activeSelf)
+				{
+					wizWaterUnit.gameObject.SetActive(true);
+					if(!withoutFood)
+						FoodController.Get.Decrement(unit.price);
+				}
+				if (unit is WizFireUnit && !wizFireUnit.gameObject.activeSelf)
+				{
+					wizFireUnit.gameObject.SetActive(true);
+					if(!withoutFood)
+						FoodController.Get.Decrement(unit.price);
+				}
+				if (unit is WizEarthUnit && !wizEarthUnit.gameObject.activeSelf)
+				{
+					wizEarthUnit.gameObject.SetActive(true);
+					if(!withoutFood)
+						FoodController.Get.Decrement(unit.price);
+				}*/
 				
 				var newUnit = Instantiate(unit,unitsPlace);
 
