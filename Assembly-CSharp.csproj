@@ -62,7 +62,8 @@
      <Compile Include="Assets\Scripts\Entity\Hexagon.cs" />
      <Compile Include="Assets\Scripts\Entity\HexagonField.cs" />
      <Compile Include="Assets\Scripts\Entity\MoveToTarget.cs" />
-     <Compile Include="Assets\Scripts\Entity\StartScene.cs" />
+     <Compile Include="Assets\Scripts\Entity\Scenes\GameScene.cs" />
+     <Compile Include="Assets\Scripts\Entity\Scenes\StartScene.cs" />
      <Compile Include="Assets\Scripts\Entity\Tower.cs" />
      <Compile Include="Assets\Scripts\Entity\Units\FoodUnit.cs" />
      <Compile Include="Assets\Scripts\Entity\Units\KnightUnit.cs" />

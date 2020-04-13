@@ -149,6 +149,11 @@ namespace Entity
 		{
 			hp -= dec;
 			fill.material.SetFloat(Fill,hp/(float)maxHp);
+
+			if (hp <= 0)
+			{
+				Field.GameOver(IdPlayer);
+			}
 			
 		}
 		private void SendSpawn()

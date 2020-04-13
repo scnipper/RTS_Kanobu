@@ -10,7 +10,6 @@ namespace Entity
 		public Hexagon hexagon;
 		public Tower tower1;
 		public Tower tower2;
-		public Transform basePos;
 		private Vector2 hexagonSize;
 		private Tower playTower;
 		private Unit selectedUnit;
@@ -19,7 +18,9 @@ namespace Entity
 		public Text priceKnight; 
 		public Text priceWizFire; 
 		public Text priceWizEarth; 
-		public Text priceWizWater; 
+		public Text priceWizWater;
+
+		public GameObject winScreen;
 
 		private void Start()
 		{
@@ -55,6 +56,15 @@ namespace Entity
 			GenerateHexagons();
 		}
 
+		public void GameOver(int playerNum)
+		{
+			winScreen.SetActive(true);
+
+			int winPlayer;
+			winPlayer = playerNum == 0 ? 2 : 1;
+			winScreen.transform.Find("WinText").GetComponent<Text>().text = $"Player {winPlayer} is win";
+
+		}
 		public Hexagon GetHexagonByPos(int x,int y)
 		{
 			string compareStr = $"HEX_{x}_{y}";
