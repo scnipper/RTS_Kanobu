@@ -34,6 +34,7 @@ namespace Entity
 		byte[] buffer = new byte[32];
 		private int sending;
 		private static readonly int Fill = Shader.PropertyToID("_Fill");
+		private Transform towerTr;
 
 
 		public enum TypeUnits
@@ -43,7 +44,8 @@ namespace Entity
 
 		private void Start()
 		{
-
+			towerTr = transform;
+			StartCoroutine(UpdateViewUnits());
 			StartCoroutine(SetPrice());
 			
 			hp = (int) P.Get.config.Tower.Hp;
@@ -59,6 +61,27 @@ namespace Entity
 				posForSpawn[0] = new Vector2(startPos.x+1,startPos.y);
 				posForSpawn[1] = new Vector2(startPos.x+1,startPos.y+1);
 				posForSpawn[2] = new Vector2(startPos.x,startPos.y+1);
+			}
+		}
+		
+		
+		private IEnumerator UpdateViewUnits()
+		{
+			while (true)
+			{
+
+				foreach (Transform tr in unitsPlace)
+				{
+					if (Vector2.Distance(tr.position, towerTr.position) < 350)
+					{
+						Unit unit = tr.GetComponent<Unit>();
+
+						if(unit.IdPlayer != IdPlayer)
+							DecrementHp(unit.attack);
+					}
+				}
+
+				yield return new WaitForSeconds((float) P.Get.config.Tower.SpeedAttack);
 			}
 		}
 

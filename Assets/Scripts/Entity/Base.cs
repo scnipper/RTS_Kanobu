@@ -55,7 +55,6 @@ namespace Entity
 						}
 					}
 				}
-				print("unit around "+unitAround);
 
 				for (int i = 0; i < unitAround; i++)
 				{

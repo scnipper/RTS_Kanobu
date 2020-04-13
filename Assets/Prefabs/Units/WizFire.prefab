@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingParam:
-    speedMove: 500
+    speedMove: 400
     minDistance: 20
   isSelectable: 1
   hp: 200
