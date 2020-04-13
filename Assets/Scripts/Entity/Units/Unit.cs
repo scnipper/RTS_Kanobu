@@ -48,7 +48,7 @@ namespace Entity
 				{
 					if (tr != unitTr)
 					{
-						if (Vector2.Distance(tr.position, unitTr.position) < 50)
+						if (Vector2.Distance(tr.position, unitTr.position) < 100)
 						{
 							Attack(tr.GetComponent<Unit>());
 						}
@@ -62,11 +62,16 @@ namespace Entity
 
 		protected virtual void Attack(Unit unit)
 		{
-			unit.hp -= attack;
+			unit.hp -= attack * (IsAttackX2(unit) ? 2:1) ;
 			if (unit.hp <= 0)
 			{
 				Destroy(unit.gameObject);
 			}
+		}
+
+		protected virtual bool IsAttackX2(Unit unit)
+		{
+			return false;
 		}
 
 		private void Update()
