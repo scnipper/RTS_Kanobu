@@ -7,7 +7,6 @@ namespace Entity
 {
 	public class Unit : MoveToTarget
 	{
-		private SpriteRenderer spriteRenderer;
 
 		public bool isSelectable = true;
 		public int hp = 200;
@@ -20,7 +19,6 @@ namespace Entity
 
 		protected override void Start()
 		{
-			spriteRenderer = GetComponent<SpriteRenderer>();
 			unitTr = transform;
 			transformParent = unitTr.parent;
 			StartCoroutine(AttackCycle());
